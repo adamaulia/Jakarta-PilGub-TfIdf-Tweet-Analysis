@@ -26,3 +26,8 @@ AhokDjarot 20 most tweet
 
 AniesSandi 20 most tweet
 ![aniessandi](https://cloud.githubusercontent.com/assets/6647899/22696588/24d3b096-ed81-11e6-89c6-bd767a187c0b.png)
+
+
+next feature
++ count tweet per day 
++ most user tweeter 
