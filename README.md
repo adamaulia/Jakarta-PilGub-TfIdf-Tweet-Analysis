@@ -31,3 +31,13 @@ AniesSandi 20 most tweet
 next feature
 + count tweet per day 
 + most user tweet / Paslon (added)
+
+tf idf simple expalation with excel 
+http://lsirwww.epfl.ch/courses/dis/2006ws/exercises/IR/Exercise8.htm 
+
+I addapt this code from 
+https://www.kaggle.com/diekanugraha/d/mousehead/songlyrics/tf-idf-weighted-artist-s-favorite-word
+and do some modification 
+
+and code for crawling 
+https://gist.github.com/yanofsky/5436496
