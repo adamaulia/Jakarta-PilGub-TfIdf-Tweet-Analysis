@@ -10,7 +10,7 @@ https://twitter.com/ahokdjarot
 
 https://twitter.com/jktmajubersama
 
-Requiment: 
+Requirement: 
 
 Python (2.7) 
 
