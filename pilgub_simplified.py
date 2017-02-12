@@ -13,6 +13,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from collections import Counter
 import operator
+import matplotlib
 
 def preprocessing_tweet(tweet):
     
@@ -24,24 +25,24 @@ def preprocessing_tweet(tweet):
 #    tweet = tweet.encode("utf-8", "replace")
     #remove link/url (http)
     tw_remove_link=' '.join(re.sub(r"h\w+(:).\S+", " ", tweet.lower()).split())
-    #print 'remove link',tw_remove_link
+    print 'remove link',tw_remove_link
     
     #remove hashtag
     tw_remove_hashtag=' '.join(re.sub(r"(#).\S+", " ", tw_remove_link.lower()).split())
-    #print 'remove hashtag',tw_remove_hashtag
+    print 'remove hashtag',tw_remove_hashtag
     
     #remove mention @
     tw_remove_mention = ' '.join(re.sub(r"(@).\S+", " ", tw_remove_hashtag.lower()).split())
-    #print 'remove mention',tw_remove_mention    
+    print 'remove mention',tw_remove_mention    
            
     #remove cc/via/
     tw_remove_ccvia = ' '.join(re.sub(r'\b(cc|RT|rt\b):?[ ](URL|@[^ ]+)', " ", tw_remove_mention.lower()).split())
     #tweet = re.sub(r'\b(via|cc|RT\b):?[ ](URL|@[^ ]+)', ' ', tweet)
-    #print 'remove via',tw_remove_ccvia
+    print 'remove via',tw_remove_ccvia
     
     #remove punctuation
     tw_remove_puc = tw_remove_ccvia.strip(string.punctuation)
-    #print 'remove punc',tw_remove_puc
+    print 'remove punc',tw_remove_puc
     
     #remove stopword
     #tw_sw_removal = list(set(tw_remove_puc.split())-set(stopword))
@@ -69,9 +70,9 @@ def tweet_user(user_tweet,paslon,most_user):
     user_tmp = dict(Counter(user_tweet[paslon]))
     user_sort = sorted(user_tmp.items(), key=operator.itemgetter(1))
     df_user = pd.DataFrame(dict(user_sort[-most_user:]).items())
+    plt.figure()
     sns.plt.suptitle(final_paslon[paslon])
     sns.barplot(x=0,y=1,data=df_user)
-    return 0
 
 print 'load dataset'    
 dataset=pd.read_excel('dataset.xlsx')
@@ -90,7 +91,7 @@ Tfidf = TfidfVectorizer(norm='l2',min_df=0, use_idf=True, smooth_idf=True, subli
 Tfidf.fit(clean_tweet)
 
 print 'Testing'
-most_tweet=20
+most_tweet=10
 final_tweet = []
 final_paslon = []
 user_tweet = []
@@ -118,5 +119,5 @@ for tweet in dataset.groupby('Paslon'):
 
 
 # change 0 for AgusSylvi, 1 AhokDjarot, 2 AniesSandi
-#tweet_viz(final_tweet,2)
-tweet_user(user_tweet,2,10)
+tweet_viz(final_tweet,2)
+tweet_user(user_tweet,2,30)
